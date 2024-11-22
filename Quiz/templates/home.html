@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}
+    <title>Online Quiz System</title>
+{% endblock title %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Welcome back, {{ user.username }}!</h1>
+        <p>Continue taking quizzes or check your results.</p>
+        <a href="{% url 'quiz_list' %}" class="btn btn-primary">Take a Quiz</a>
+        <a href="{% url 'results' %}" class="btn btn-secondary">View Results</a>
+    {% else %}
+        <h1>Welcome to Online Quiz System</h1>
+        <p>Online Quiz System is a web application that allows users to take quizzes online. Users can create an account, log in, and take quizzes. The application will keep track of the user's score and display it at the end of the quiz.</p>
+        <p>Get started by creating an account or logging in to take a quiz!</p>
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+        <a href="{% url 'signup' %}" class="btn btn-secondary">Sign Up</a>
+    {% endif %}
+{% endblock content %}a

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Quiz List</title>
+{% endblock title %}
+
+{% block content %}
+{% if quiz_list %}
+    <ul>
+        {% for quiz in quiz_list %}
+            <li>
+                <a href="{% url 'quiz_detail' quiz.id %}">{{ quiz.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No quizzes available.</p>
+{% endif %}
+{% endblock content %}
