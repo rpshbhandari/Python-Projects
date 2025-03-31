@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load custom_filters %}
 
 {% block title %}Edit Profile{% endblock %}
 
@@ -6,34 +7,33 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h2 class="text-center mb-4">Edit Profile</h2>
-
-                    <form method="POST" enctype="multipart/form-data">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                         {% csrf_token %}
 
-                        <div class="mb-4">
-                            <label class="form-label">Profile Picture:</label>
-                            <div class="d-flex align-items-center">
+                        <div class="mb-4 text-center">
+                            <div class="d-flex flex-column align-items-center">
                                 {% if form.instance.profile_picture %}
-                                    <img src="{{ form.instance.profile_picture.url }}" alt="Profile Picture" class="rounded-circle" width="60" height="60">
+                                    <img src="{{ form.instance.profile_picture.url }}" 
+                                         alt="Profile Picture" 
+                                         class="rounded-circle border border-secondary mb-3" 
+                                         width="150" height="150">
                                 {% endif %}
-                                <div class="flex-grow-1">
+                                <div class="w-100">
                                     {{ form.profile_picture }}
                                 </div>
-                                {% comment %} <div class="ms-2">
-                                    <label for="id_profile_picture-clear">Clear</label>
-                                </div> {% endcomment %}
                             </div>
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label">Bio:</label>
-                            {{ form.bio }}
+                            <label class="form-label fw-bold">Bio:</label>
+                            {{ form.bio|add_class:"form-control" }}
                         </div>
 
-                        <button type="submit" class="btn btn-success w-100 mt-3">Save Changes</button>
+                        <button type="submit" class="btn btn-success w-100 mt-3 py-2">
+                            <i class="bi bi-save me-2"></i>Save Changes
+                        </button>
                     </form>
                 </div>
             </div>
