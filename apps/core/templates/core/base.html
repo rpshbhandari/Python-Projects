@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}CBE{% endblock %}</title>
     
-    <!-- Bootstrap CSS (via CDN) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJr+X00rG4lf6StT5eQw0rGTVg5P1Vq6ZwW75cTPuFiZ2K6EIo2Fsrtjq2Z8" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
     {% block extra_head %}
     <!-- Additional head content like extra stylesheets or meta tags -->
@@ -37,10 +36,6 @@
                                 <a class="nav-link" href="{% url 'core:about' %}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'core:contact' %}">Contact</a>
-                            </li>
-                            
-                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
                             </li>
                             <li class="nav-item">
@@ -53,7 +48,7 @@
         </nav>
     </header>
 
-    <main class="container mt-4">
+    <main class="container mt-4 flex-grow-1">
         {% block content %}
         <!-- Page-specific content goes here -->
         {% endblock %}
@@ -64,8 +59,8 @@
     </footer>
 
     <!-- Bootstrap JS (via CDN) -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb+KD4QKp6I7y70f2VYfSfFx0XH2v5k9nK6t8q7mxogQHnC6p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyD4H0HUx2O2kLY2ZtQ09oVp1BdAm7J+WWV2kC31vxZGFevX5dZc5xR" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
     {% block extra_scripts %}
     <!-- Additional scripts -->
