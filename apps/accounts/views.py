@@ -1,15 +1,14 @@
-from django.shortcuts import redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
-from django.views.generic import TemplateView, FormView, RedirectView
+from django.views.generic import FormView, RedirectView
 from django.urls import reverse_lazy
 
 # Login View
 class LoginView(FormView):
     template_name = 'accounts/login.html'
     form_class = AuthenticationForm
-    success_url = reverse_lazy('core:home')
+    success_url = reverse_lazy('home:profile')
 
     def form_valid(self, form):
         username = form.cleaned_data.get('username')
