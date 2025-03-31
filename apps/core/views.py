@@ -6,10 +6,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class IndexView(TemplateView):
     template_name = 'core/index.html'
 
-class HomeView(LoginRequiredMixin, TemplateView):
-    template_name = 'core/home.html'
-    login_url = '/accounts/login/'
-    
 
 # About Page View
 class AboutView(TemplateView):

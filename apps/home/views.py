@@ -5,6 +5,11 @@ from .models import Profile
 from .forms import ProfileForm
 
 
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'home/home.html'
+    login_url = '/accounts/login/'
+    
+
 # Create your views here.
 class ProfileView(TemplateView):
     template_name = 'home/profile.html'

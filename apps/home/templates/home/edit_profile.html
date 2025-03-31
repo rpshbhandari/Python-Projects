@@ -5,16 +5,35 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 col-lg-6">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h2 class="text-center mb-4">Edit Profile</h2>
 
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.as_p }}  <!-- Render form fields with default styling -->
 
-                        <button type="submit" class="btn btn-success w-100">Save Changes</button>
+                        <div class="mb-4">
+                            <label class="form-label">Profile Picture:</label>
+                            <div class="d-flex align-items-center">
+                                {% if form.instance.profile_picture %}
+                                    <img src="{{ form.instance.profile_picture.url }}" alt="Profile Picture" class="rounded-circle" width="60" height="60">
+                                {% endif %}
+                                <div class="flex-grow-1">
+                                    {{ form.profile_picture }}
+                                </div>
+                                {% comment %} <div class="ms-2">
+                                    <label for="id_profile_picture-clear">Clear</label>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Bio:</label>
+                            {{ form.bio }}
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 mt-3">Save Changes</button>
                     </form>
                 </div>
             </div>

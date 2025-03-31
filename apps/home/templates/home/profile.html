@@ -5,21 +5,28 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-lg-6 col-md-8">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h2 class="text-center mb-4">My Profile</h2>
 
                     <div class="row">
                         <div class="col-md-4 text-center">
-                            <img src="{{ profile.profile_picture.url if profile.profile_picture else '/static/default-avatar.png' }}" class="img-fluid rounded-circle mb-3" width="150" alt="Profile Picture">
+                            <!-- Profile Picture -->
+                            <img src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}/static/default-avatar.png{% endif %}" 
+                                class="img-fluid rounded-circle mb-3" 
+                                width="150" 
+                                alt="Profile Picture">
                         </div>
                         <div class="col-md-8">
-                            <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                            <h4 class="font-weight-bold">{{ user.first_name }} {{ user.last_name }}</h4>
                             <p class="text-muted">{{ user.email }}</p>
-                            <p>{{ profile.bio }}</p>
+                            <p class="mt-2">{{ profile.bio }}</p>
 
-                            <a href="{% url 'home:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+                            <!-- Edit Profile Button -->
+                            <div class="mt-4">
+                                <a href="{% url 'home:edit_profile' %}" class="btn btn-primary btn-lg w-100">Edit Profile</a>
+                            </div>
                         </div>
                     </div>
                 </div>

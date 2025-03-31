@@ -9,7 +9,10 @@
             <!-- Profile Sidebar -->
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-                    <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="rounded-circle mb-3" width="100">
+                    <img src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}/static/default-avatar.png{% endif %}" 
+                                class="img-fluid rounded-circle mb-3" 
+                                width="150" 
+                                alt="Profile Picture">
                     <h5>{{ user.first_name }} {{ user.last_name }}</h5>
                     <p class="text-muted">{{ user.role }}</p>
                     <a href="{% url 'home:edit_profile' %}" class="btn btn-primary btn-sm w-100">Edit Profile</a>
