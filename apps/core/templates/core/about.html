@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center">Welcome to the Computer-Based Exam Platform!</h1>
+        <p class="text-center">Please login or register to get started with your exams.</p>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg">Login</a>
+            <a href="{% url 'accounts:register' %}" class="btn btn-secondary btn-lg">Register</a>
+        </div>
+    </div>
+{% endblock %}
