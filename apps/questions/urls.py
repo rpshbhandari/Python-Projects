@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import question_list, question_detail
+from .views import QuestionListView, QuestionDetailView
 
 app_name = "questions"
 
 urlpatterns = [
-    path("", question_list, name="question_list"),
-    path("<int:pk>/", question_detail, name="question_detail"),
+    path("", QuestionListView.as_view(), name="question_list"),
+    path("<int:pk>/", QuestionDetailView.as_view(), name="question_detail"),
 ]

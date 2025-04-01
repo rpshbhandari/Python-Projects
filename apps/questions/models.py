@@ -9,9 +9,9 @@ class QuestionCategory(models.Model):
 class Question(models.Model):
     QUESTION_TYPES = [
         ('MCQ', 'Multiple Choice'),
-        ('TF', 'True/False'),
-        ('FIB', 'Fill in the Blanks'),
-        ('ESSAY', 'Essay'),
+        # ('TF', 'True/False'),
+        # ('FIB', 'Fill in the Blanks'),
+        # ('ESSAY', 'Essay'),
     ]
 
     text = models.TextField()
