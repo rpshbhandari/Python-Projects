@@ -1,8 +1,8 @@
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from typing import Any, Dict
-# Home Page View
+from typing import Any
+
 class IndexView(TemplateView):
     template_name = 'core/index.html'
 
@@ -13,7 +13,6 @@ class IndexView(TemplateView):
         if request.user.is_authenticated:
             return redirect('home:home')  # Replace 'home' with the name of your home URL pattern
         return super().dispatch(request, *args, **kwargs)
-
 
 # About Page View
 class AboutView(TemplateView):

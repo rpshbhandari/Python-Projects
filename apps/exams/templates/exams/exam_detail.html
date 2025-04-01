@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ exam.title }}</h2>
+<p>{{ exam.description }}</p>
+<p>Start: {{ exam.start_time }}</p>
+<p>End: {{ exam.end_time }}</p>
+<a href="{% url 'exams:start_exam' exam.pk %}" class="btn btn-success">Start Exam</a>
+{% endblock %}

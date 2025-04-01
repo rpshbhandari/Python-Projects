@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.core',
     'apps.home',
-
+    'apps.exams',
+    'apps.questions',
 ]
 
 MIDDLEWARE = [
