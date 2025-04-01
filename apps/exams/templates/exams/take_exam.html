@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Exam: {{ exam.title }}</h2>
+    <p>Question {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ page_obj.object_list.first.question_text }}</h5>
+
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="question_id" value="{{ page_obj.object_list.first.id }}">
+
+                <div class="form-group">
+                    {% for choice in page_obj.object_list.first.choices.all %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer_text" id="choice_{{ choice.id }}" value="{{ choice.text }}">
+                            <label class="form-check-label" for="choice_{{ choice.id }}">
+                                {{ choice.text }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Answer</button>
+            </form>
+        </div>
+    </div>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-link mt-2">Next Question</a>
+    {% else %}
+        <a href="{% url 'exams:exam_results' pk=exam.pk %}" class="btn btn-success mt-2">Submit Exam</a>
+    {% endif %}
+</div>
+{% endblock %}
