@@ -1,0 +1,112 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Profile Sidebar -->
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <img src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}/static/default-avatar.png{% endif %}" 
+                         class="img-fluid rounded-circle mb-3" 
+                         width="120" height="120" 
+                         alt="Profile Picture">
+                    <h5 class="fw-bold">{{ user.first_name }} {{ user.last_name }}</h5>
+                    <p class="text-muted">{{ user.role|default:"Student" }}</p>
+                    <a href="{% url 'home:edit_profile' %}" class="btn btn-outline-primary btn-sm w-100">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="col-md-9">
+            <div class="row">
+                <!-- Upcoming Exams -->
+                <div class="col-md-6 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h6 class="mb-0"><i class="bi bi-calendar-check"></i> Upcoming Exams</h6>
+                        </div>
+                        <div class="card-body">
+                            {% if upcoming_exams %}
+                                <ul class="list-group">
+                                    {% for exam in upcoming_exams %}
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            {{ exam.title }} - {{ exam.date|date:"d M Y" }}
+                                            <a href="{% url 'exams:exam_detail' exam.id %}" class="btn btn-sm btn-outline-success">View</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="text-muted text-center">No upcoming exams.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="col-md-6 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h6 class="mb-0"><i class="bi bi-clock-history"></i> Recent Activity</h6>
+                        </div>
+                        <div class="card-body">
+                            {% if recent_activities %}
+                                <ul class="list-group">
+                                    {% for activity in recent_activities %}
+                                        <li class="list-group-item">{{ activity }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="text-muted text-center">No recent activity.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Overview -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-warning">
+                            <h6 class="mb-0"><i class="bi bi-bar-chart-line"></i> Performance Overview</h6>
+                        </div>
+                        <div class="card-body text-center">
+                            <h6>Last Exam Score: <strong>{{ last_exam_score|default:"N/A" }}%</strong></h6>
+                            <p>Rank: <strong>{{ user_rank|default:"-/-" }}</strong></p>
+                            <div class="progress mt-3">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: {{ last_exam_score|default:0 }}%" 
+                                     aria-valuenow="{{ last_exam_score|default:0 }}" aria-valuemin="0" aria-valuemax="100">
+                                    {{ last_exam_score|default:"0" }}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="row mt-4">
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'exams:exam_list' %}" class="btn btn-outline-success w-100">
+                        <i class="bi bi-pencil-square"></i> Start New Exam
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'exams:exam_list' %}" class="btn btn-outline-info w-100">
+                        <i class="bi bi-graph-up"></i> View Reports
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'exams:exam_list' %}" class="btn btn-outline-warning w-100">
+                        <i class="bi bi-book"></i> Take Practice Test
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

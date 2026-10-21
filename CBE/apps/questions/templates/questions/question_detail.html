@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ question.text }}</h2>
+<p>Type: {{ question.get_question_type_display }}</p>
+<p>Category: {{ question.category.name }}</p>
+{% if question.question_type == "MCQ" %}
+    <ul>
+        {% for choice in question.choices.all %}
+            <li>{{ choice.text }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>Available Exams</h2>
+<ul>
+    {% for exam in exams %}
+        <li>
+            <a href="{% url 'exams:exam_detail' exam.pk %}">{{ exam.title }}</a>
+            - <a href="{% url 'exams:start_exam' exam.pk %}" class="btn btn-primary btn-sm">Start Exam</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

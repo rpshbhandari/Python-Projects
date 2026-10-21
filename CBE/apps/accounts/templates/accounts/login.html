@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Login to your account</h2>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Form Fields -->
+                        {{ form.as_p }}  <!-- Render the form fields wrapped in <p> tags -->
+
+                        <!-- Submit Button -->
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </div>
+                        
+                        <!-- Hidden 'next' field to redirect after login -->
+                        {% if next %}
+                            <input type="hidden" name="next" value="{{ next }}">
+                        {% endif %}
+                    </form>
+                    
+                    <!-- Registration Link -->
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="{% url 'accounts:register' %}" class="text-primary">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

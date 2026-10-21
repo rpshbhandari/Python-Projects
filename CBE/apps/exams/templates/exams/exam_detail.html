@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">{{ exam.title }}</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p class="lead">{{ exam.description }}</p>
+
+            <p><strong>Start Time:</strong> {{ exam.start_time|date:"F j, Y, g:i a" }}</p>
+            <p><strong>End Time:</strong> {{ exam.end_time|date:"F j, Y, g:i a" }}</p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'exams:start_exam' exam.pk %}" class="btn btn-lg btn-success" {% if exam.start_time > now %} disabled {% endif %}>
+            {% if exam.start_time > now %}
+                Exam not started yet
+            {% else %}
+                Start Exam
+            {% endif %}
+        </a>
+    </div>
+</div>
+{% endblock %}
