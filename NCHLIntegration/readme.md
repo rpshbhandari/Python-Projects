@@ -14,8 +14,8 @@ This project is designed to handle secure transaction requests using a PKCS#12 (
 1. **Clone the repository:**
 
     ```bash
-    git clone <repository-url>
-    cd <project-directory>
+    git clone https://github.com/rpshbhandari/Python-Projects.git
+    cd Python-Projects/NCHLIntegration
     ```
 
 2. **Create and activate a virtual environment:**

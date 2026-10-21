@@ -11,6 +11,11 @@ Small Python projects built from scratch.
 | [IRD](IRD) | Looks up PAN details from the Inland Revenue Department of Nepal |
 | [Bingo](Bingo) | A Bingo game for any number of players in the terminal (`python Bingo/src/main.py`) |
 | [LibraryManagement](LibraryManagement) | Books, members and loans for a small lending library |
+| [SocketProgramming](SocketProgramming) | An HTTP server and client on raw sockets |
+| [OnlineQuizSystem](OnlineQuizSystem) | Quiz site in Django: accounts, quizzes answered one question at a time, results and a leaderboard |
+| [BCIntegration](BCIntegration) | Read and write Business Central data through its OData web services |
+| [NCHLIntegration](NCHLIntegration) | Sign and send transaction requests to NCHL with a PKCS#12 (.pfx) certificate |
+| [COVID19DataAnalysis](COVID19DataAnalysis) | pandas and matplotlib look at India's first COVID-19 cases, January to March 2020 |
 
 ## Contributions
 
