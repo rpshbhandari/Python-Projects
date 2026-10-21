@@ -16,6 +16,7 @@ Small Python projects built from scratch.
 | [BCIntegration](BCIntegration) | Read and write Business Central data through its OData web services |
 | [NCHLIntegration](NCHLIntegration) | Sign and send transaction requests to NCHL with a PKCS#12 (.pfx) certificate |
 | [COVID19DataAnalysis](COVID19DataAnalysis) | pandas and matplotlib look at India's first COVID-19 cases, January to March 2020 |
+| [AirplaneManagementSystem](AirplaneManagementSystem) | Aircraft and parts as fixed assets, with flight hours, cycles and days, in pandas |
 
 ## Contributions
 
