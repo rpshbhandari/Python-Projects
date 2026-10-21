@@ -26,13 +26,13 @@
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/RupeshBhandari/pyexam-cli.git
+    git clone https://github.com/rpshbhandari/Python-Projects.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd pyexam-cli
+    cd Python-Projects/PyExamCLI
     ```
 
 3. Install required libraries:
