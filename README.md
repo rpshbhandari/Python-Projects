@@ -18,15 +18,11 @@ pip install requests
 To run the script, execute the following command:
 
 ```shell
-python script_name.py
+python IRD.py
 ```
 
-Replace script_name.py with the actual name of your Python file.
+The PAN number is set in the `IRD(pan_no=...)` call at the bottom of `IRD.py`; change it to look up a different PAN.
 
-### Example
-```shell
-python ird_pan_search.py
-```
 ### Script Output
 The script logs the process and results to both the console and a log file named search_pan.log.
 
