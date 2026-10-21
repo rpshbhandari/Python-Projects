@@ -8,3 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Created at run time
+data/*.db
+logs/
