@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Quiz Question</title>
+{% endblock title %}
+{% block content %}
+<h1>{{ question.text }}</h1>
+<form method="post" action="{% url 'submit_answer' attempt.id question.id %}">
+    {% csrf_token %}
+    {% if question.question_type == 'MCQ' %}
+        {% for choice in question.choices.all %}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="choice" id="choice{{ choice.id }}" value="{{ choice.id }}">
+                <label class="form-check-label" for="choice{{ choice.id }}">
+                    {{ choice.text }}
+                </label>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="mb-3">
+            <label for="answer" class="form-label">Your Answer</label>
+            <input type="text" class="form-control" id="answer" name="answer">
+        </div>
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock content %}
